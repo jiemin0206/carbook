@@ -5,6 +5,7 @@ document.getElementById('form')
    event.preventDefault();
 
    btn.value = 'Sending...';
+   btn.disabled = true;
 
    const serviceID = 'default_service';
    const templateID = 'template_4jy2yu9';
@@ -12,9 +13,11 @@ document.getElementById('form')
    emailjs.sendForm(serviceID, templateID, this)
     .then(() => {
       btn.value = 'Send Email';
+      btn.disabled = false;
       alert('Sent!');
     }, (err) => {
       btn.value = 'Send Email';
+      btn.disabled = false;
       alert(JSON.stringify(err));
     });
 });

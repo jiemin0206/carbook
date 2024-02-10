@@ -37,7 +37,6 @@
   <link rel="stylesheet" href="css/icomoon.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
 
@@ -547,8 +546,25 @@
 
   <script src="js/main.js"></script>
   <script src="js/contentful.js"></script>
-  <script src="js/supabase.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js" type="module"></script>
+  <!-- <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'
+  
+    (async function() {
+      const supabaseUrl = 'https://wbulnqvfawsmromxlekp.supabase.co';
+      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndidWxucXZmYXdzbXJvbXhsZWtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDY5NjE0OTIsImV4cCI6MjAyMjUzNzQ5Mn0.ZayUloWk_P1121_QycLaQ99dyzfMHxyyfJe1qXYge5Y';
+    
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      
+      const { data, error } = await supabase
+        .from('Customers')
+        .select();
+      
+      console.log('supabase');
+      console.log(data);
+    })();
+  </script> -->
 </body>
 
 </html>

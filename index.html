@@ -415,8 +415,7 @@
           <h2 class="mb-2">Place Your Order</h2>
         </div>
       </div>
-      <div class="row d-flex contact-info">
-        <div class="col-md-6 col-lg-8 d-flex">
+      <div class="col">
           <form id="order-form" class="bg-light p-5 contact-form">
             <div class="form-group">
               <input type="text" class="form-control" name="fullName" placeholder="Full Name">
@@ -428,7 +427,8 @@
               <input type="email" class="form-control" name="emailAddress" placeholder="Email Address">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="vehicleModel" placeholder="Vehicle Model / Car Details">
+              <select class="custom-select" id="vehicle-dropdown" name="vehicle">
+              </select>
             </div>
             <div class="form-group">
               <input type="text" class="form-control" name="depositAmount" placeholder="Deposit Amount">
@@ -440,7 +440,6 @@
               <input type="submit" id="submitButton" value="Submit Order" class="btn btn-primary py-3 px-5">
             </div>
           </form>
-        </div>
       </div>
     </div>
   </section>  

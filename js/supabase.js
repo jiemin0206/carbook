@@ -22,6 +22,7 @@
     if (error) {
       console.log(error)
     }
+    return data[0];
   }
 
   async function getVehichleData() {
@@ -89,24 +90,19 @@
     console.log('Contact:', contactNumber);
     console.log('deposit', depositAmount)
     // 2. check if the customer exists, 
-    const existingCustomer = await checkCustomerExists(fullName);
+    let existingCustomer = await checkCustomerExists(fullName);
     if(!existingCustomer) {
-      //insert customer to database
-      await insertCustomerData(fullName, contactNumber, emailAddress)
+      existingCustomer = await insertCustomerData(fullName, contactNumber, emailAddress)
     }
     
     // 4. create order based on customer data
 
-    if (existingCustomer) {
-      const order = await insertOrderData(customer.id, vehicleId, deposit, status);
+    const order = await insertOrderData(existingCustomer.id, vehicleId, depositAmount, status);
       if (order) {
         console.log('Order created successfully:', order);
       }
-    } else {
-      console.error('Failed to create or find customer.');
-    }
-  
-  
+      btn.value = 'Submit';
+      btn.disabled = false; 
   
     // 5. create payment via stripe
     });
@@ -116,7 +112,7 @@
         .select()
         .eq('customer_name', customerName)
       if(data && data.length > 0) {
-        return data;
+        return data[0];
       }
       return null;
     }

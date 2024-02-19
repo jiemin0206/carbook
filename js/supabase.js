@@ -30,6 +30,19 @@
     .select()
     return data;
   }
+
+  async function insertOrderData(customerId, vehicleId, deposit, status) {
+    const { data, error } = await sup
+      .from('Orders')
+      .insert([
+        { customer_ID: customerId, vehicle_ID: vehicleId, deposit: deposit, status: status },
+      ]);
+    console.log(data);
+    if (error) {
+      console.error(error);
+    }
+  }
+
   // vehicle dropdown preselect from database
   await renderVehicleDataToDropdown();
   async function renderVehicleDataToDropdown() {
@@ -68,9 +81,13 @@
     const fullName = formValues['fullName'];
     const contactNumber = formValues['contactNumber'];
     const emailAddress = formValues['emailAddress'];
+    const vehicleId = formValues['vehicle'];
+    const depositAmount = formValues['depositAmount']
+    const status = 'pending'
     console.log('vehicle: ', formValues['vehicle'])
     console.log('Full Name:', fullName);
     console.log('Contact:', contactNumber);
+    console.log('deposit', depositAmount)
     // 2. check if the customer exists, 
     const existingCustomer = await checkCustomerExists(fullName);
     if(!existingCustomer) {
@@ -79,7 +96,18 @@
     }
     
     // 4. create order based on customer data
-    
+
+    if (existingCustomer) {
+      const order = await insertOrderData(customer.id, vehicleId, deposit, status);
+      if (order) {
+        console.log('Order created successfully:', order);
+      }
+    } else {
+      console.error('Failed to create or find customer.');
+    }
+  
+  
+  
     // 5. create payment via stripe
     });
     async function checkCustomerExists(customerName) {

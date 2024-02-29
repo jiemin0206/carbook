@@ -14,7 +14,9 @@
   <title>Carbook - Free Bootstrap 4 Teasmplate by Colorlib</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
     rel="stylesheet">
 
@@ -32,16 +34,24 @@
   <link rel="stylesheet" href="css/bootstrap-datepicker.css">
   <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
   <link rel="stylesheet" href="css/style.css">
+  <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+  <link rel="stylesheet" href="css/chatbot.css">
+
   <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
 
 </head>
 
 <body>
-
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
       <a class="navbar-brand" href="index.html">NO.7<span>HWY</span></a>
@@ -439,6 +449,11 @@
             <div class="form-group">
               <input type="submit" id="submitButton" value="Submit Order" class="btn btn-primary py-3 px-5">
             </div>
+            <stripe-buy-button
+  buy-button-id="buy_btn_1OmbMXDJ1RSkFqWlSxjfK6rP"
+  publishable-key="pk_test_51MoEUwDJ1RSkFqWlR9fJi8QHhX4mgVcqVctnyoSU9uQFJiAsjh5Utofatpx2HvlOXblmKTzLYv4U2DNUzPI9d9K200K7iXSZne"
+>
+</stripe-buy-button>
           </form>
       </div>
     </div>
@@ -545,6 +560,8 @@
   <script src="js/contentful.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase.js" type="module"></script>
+  <script src="js/chatbot.js"></script>
+
   <!-- <script type="module">
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'
   

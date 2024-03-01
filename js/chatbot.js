@@ -58,32 +58,24 @@ const createChatLi = (message, className) => {
 };
 
 const generateResponse = (incomingChatLi) => {
-  const API_URL = 'https://api.openai.com/v1/chat/completions';
   const messageElement = incomingChatLi.querySelector('p');
-
   const requestOptions = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: 'gpt-3.5-turbo',
-      message: [{ role: 'user', content: userMessage }],
-    }),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userInput: userMessage }),
   };
-  fetch(API_URL, requestOptions)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      messageElement.textContent = data.choices[0].message.content;
-    })
-    .catch((error) => {
-      messageElement.classList.add('error');
-      messageElement.textContent = 'Oops! Please try again!';
-      console.log(error);
-    })
-    .finally(() => chatBox.scrollTo(0, chatBox.scrollHeight));
+
+  fetch('http://localhost:5000/chatbot', requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+          messageElement.textContent = data.reply;
+      })
+      .catch((error) => {
+          messageElement.classList.add('error');
+          messageElement.textContent = 'Oops! Please try again!';
+          console.log(error);
+      })
+      .finally(() => chatBox.scrollTo(0, chatBox.scrollHeight));
 };
 
 const handleChat = () => {

@@ -1,5 +1,27 @@
 (function () {
 // add the template to html on page load
+
+var chatBotHtml = `
+<div class="chatbot">
+  <div class="chatbot__header">
+    <h3 class="chatbox__title">Chatbot</h3>
+    <span class="material-symbols-outlined">close</span>
+  </div>
+  <ul class="chatbot__box">
+    <li class="chatbot__chat incoming">
+      <span class="material-symbols-outlined">smart_toy</span>
+      <p>Hi, this is SACommunity. How can I help you today?</p>
+    </li>
+  </ul>
+  <div class="chatbot__input-box">
+    <textarea
+      class="chatbot__textarea"
+      placeholder="Enter a message..."
+      required
+    ></textarea>
+    <span id="send-btn" class="material-symbols-outlined">send</span>
+  </div>
+`;
 var template = `
 <!-- Code :) -->
 <button class="chatbot__button">
@@ -14,10 +36,7 @@ var template = `
   <ul class="chatbot__box">
     <li class="chatbot__chat incoming">
       <span class="material-symbols-outlined">smart_toy</span>
-      <p>Hi there. How can I help you today?</p>
-    </li>
-    <li class="chatbot__chat outgoing">
-      <p>...</p>
+      <p>Hi, this is SACommunity. How can I help you today?</p>
     </li>
   </ul>
   <div class="chatbot__input-box">
@@ -33,7 +52,8 @@ var template = `
 
 document.body.insertAdjacentHTML('afterbegin', template);
 
-
+// var placeholder = document.getElementById('chatbot-placeholder');
+// placeholder.innerHTML = chatBotHtml;
 const chatbotToggle = document.querySelector('.chatbot__button');
 const sendChatBtn = document.querySelector('.chatbot__input-box span');
 const chatInput = document.querySelector('.chatbot__textarea');

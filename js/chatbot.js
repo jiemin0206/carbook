@@ -2,8 +2,12 @@
   // add the template to html on page load
   var template = `
   <!-- Code :) -->
+  <div class="chatbot__welcome__text">
+    <span class="material-symbols-outlined" id="hide-welcome-text">cancel</span>
+    <p>Hi! I'm SAcommunity chatbot. How can I help you today?</p>
+  </div>
   <button class="chatbot__button">
-    <span class="material-symbols-outlined">mode_comment</span>
+    <span class="material-symbols-outlined">sms</span>
     <span class="material-symbols-outlined">close</span>
   </button>
   <div class="chatbot">
@@ -26,9 +30,11 @@
     </div>
   </div>
   `
-  
+
   document.body.insertAdjacentHTML('afterbegin', template);
-  
+  document.getElementById('hide-welcome-text').addEventListener('click', () => {
+    document.querySelector('.chatbot__welcome__text').style.display = 'none';
+  });
   
   const chatbotToggle = document.querySelector('.chatbot__button');
   const sendChatBtn = document.querySelector('.chatbot__input-box span');

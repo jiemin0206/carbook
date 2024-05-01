@@ -9,13 +9,37 @@
 .chatbot > * {
   font-family: 'Poppins', sans-serif;
 }
-
+.chatbot__welcome__text {
+  position: fixed;
+  bottom: 55px;
+  right: 130px;
+  display: flex;
+  z-index: 999;
+  font-size: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee8e8;
+  border-radius: 5px 5px 0 5px;
+}
+.chatbot__welcome__text > p {
+  margin: 10px;
+}
+.chatbot__welcome__text > .material-symbols-outlined {
+  position: absolute;
+  top: -10px;
+  left: -12px;
+  color: white;
+  font-size: 15px;
+}
+.chatbot__welcome__text > .material-symbols-outlined:hover {
+  cursor: pointer;
+}
 .chatbot__button {
   position: fixed;
   bottom: 35px;
   right: 40px;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -180,4 +204,7 @@
   .chatbot__header h3 {
     margin-bottom: 0;
   }
+}
+.chatbot__button > .material-symbols-outlined {
+  font-size: 40px;
 }
